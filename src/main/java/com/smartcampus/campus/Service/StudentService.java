@@ -7,4 +7,6 @@ import java.util.List;
 @Component
 public interface StudentService {
     List<Student> getAllStudent();
+    void save(Student student);
 }
+

@@ -8,5 +8,8 @@ import java.util.List;
 public interface StudentService {
     List<Student> getAllStudent();
     void save(Student student);
+    Student getStudent(Long id);
+
+    void deleteStudent(Long id);
 }
 

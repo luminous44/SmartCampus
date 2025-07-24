@@ -4,11 +4,9 @@ import com.smartcampus.campus.Entity.Student;
 import com.smartcampus.campus.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentController {
@@ -20,6 +18,7 @@ public class StudentController {
         model.addAttribute("students",service.getAllStudent());
         return "student";
     }
+
     @GetMapping("/addStudent")
     public String addStudentForm(Model model) {
         model.addAttribute("student", new Student());
@@ -32,5 +31,23 @@ public class StudentController {
         service.save(student);
         return "redirect:/students";
     }
+
+    @RequestMapping("/editStudent/{id}")
+
+    public String editStudent(@PathVariable("id") Long id,Model model){
+        Student student = service.getStudent(id);
+        model.addAttribute("student",student);
+        return "EditStudent";
+    }
+
+
+    @RequestMapping("/deleteStudent/{id}")
+
+    public String deleteStudent(@PathVariable("id") Long id){
+        service.deleteStudent(id);
+        return "redirect:/students";
+    }
+
+
 
 }

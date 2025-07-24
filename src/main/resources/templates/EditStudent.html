@@ -19,18 +19,18 @@
           th:action="@{/createStudent}"
           th:object="${student}"
           method="post">
-
+        <input type="hidden" th:field="*{id}" th:value="${student.id}">
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" th:field="*{firstName}" class="form-control" id="firstName">
+            <input type="text" th:field="*{firstName}" class="form-control" id="firstName" th:value="${student.firstName}">
         </div>
         <div class="mb-3">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" th:field="*{lastName}" class="form-control" id="lastName">
+            <input type="text" th:field="*{lastName}" class="form-control" id="lastName" th:value="${student.lastName}">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" th:field="*{email}" class="form-control" id="email">
+            <input type="email" th:field="*{email}" class="form-control" id="email" th:value="${student.email}">
         </div>
 
         <center><button type="submit" class="btn btn-primary">Submit</button></center>

@@ -47,6 +47,11 @@ public class StudentController {
         service.deleteStudent(id);
         return "redirect:/students";
     }
+    @GetMapping("/addStudentToList")
+    public String goToAdd(Model model) {
+        model.addAttribute("student", new Student());
+        return "addStudent";
+    }
 
 
 
